@@ -1,10 +1,10 @@
 import React from 'react';
 import { CssBaseline } from '@mui/material';
+import { Routes, Route } from 'react-router-dom';
 import useStyles from './styles';
-// import { Routes, Route } from 'react-router-dom';
 
 import { NavBar } from '.';
-// import { Actors, MovieInformation, Movies, Profile } from '../pages';
+import { Actors, MovieInformation, Movies, Profile } from '../pages';
 
 function App() {
   const classes = useStyles();
@@ -14,7 +14,13 @@ function App() {
       <CssBaseline />
       <NavBar />
       <main className={classes.content}>
-        <div className="toolbar">Hello Toolbar</div>
+        <div className={classes.toolbar}>Hello Toolbar</div>
+        <Routes>
+          <Route path="/" element={<Movies />} />
+          <Route path="/movie/:id" element={<MovieInformation />} />
+          <Route path="/actors/:id" element={<Actors />} />
+          <Route path="/profile/:id" element={<Profile />} />
+        </Routes>
       </main>
     </div>
   );
