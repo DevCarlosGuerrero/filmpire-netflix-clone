@@ -17,6 +17,7 @@ import {
 import { Link } from 'react-router-dom';
 import { useTheme } from '@mui/material/styles';
 import { Sidebar, Search } from '..';
+import { fetchToken } from '../../utils';
 import useStyles from './styles';
 
 function NavBar() {
@@ -24,7 +25,7 @@ function NavBar() {
   const classes = useStyles();
   const theme = useTheme();
   const isMobile = useMediaQuery('(max-width:600px)');
-  const isAuthenticated = true;
+  const isAuthenticated = false;
 
   return (
     <>
@@ -47,7 +48,7 @@ function NavBar() {
           {!isMobile && <Search />}
           <div>
             {!isAuthenticated ? (
-              <Button color="inherit" onClick={() => {}}>
+              <Button color="inherit" onClick={fetchToken}>
                 Login &nbsp; <AccountCircle />
               </Button>
             ) : (
